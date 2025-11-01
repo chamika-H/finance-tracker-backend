@@ -1,7 +1,10 @@
 package com.finance.finance_tracker.model;
 
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
+
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "expense")
@@ -14,8 +17,10 @@ public class Expense {
     @Column(name="user_id")
     private Integer userId;
 
+
     @Column(name="expense_date")
-    private String expenseDate;
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    private LocalDate expenseDate;  // Changed from String to LocalDate
 
     private String category;
     private Double amount;
@@ -35,12 +40,8 @@ public class Expense {
         this.userId = userId;
     }
 
-    public String getExpenseDate() {
-        return expenseDate;
-    }
-    public void setExpenseDate(String expenseDate) {
-        this.expenseDate = expenseDate;
-    }
+    public LocalDate getExpenseDate() { return expenseDate; }
+    public void setExpenseDate(LocalDate expenseDate) { this.expenseDate = expenseDate; }
 
     public String getCategory() {
         return category;

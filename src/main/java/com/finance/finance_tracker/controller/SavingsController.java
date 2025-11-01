@@ -19,6 +19,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api/savings")
+@CrossOrigin(origins = "http://localhost:3000", allowCredentials = "true")
 public class SavingsController {
 
     @Autowired
@@ -106,7 +107,8 @@ public class SavingsController {
             table.addCell(String.valueOf(s.getCurrentAmount()));
             table.addCell(String.valueOf(s.getTargetAmount()));
             table.addCell(String.format("%.2f%%", percent));
-            table.addCell(s.getEndDate());
+            table.addCell(s.getEndDate().toString());
+
         }
         document.add(table);
         document.close();

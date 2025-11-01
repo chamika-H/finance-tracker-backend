@@ -9,12 +9,15 @@ import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 @RestController
+
 @RequestMapping("/api/expenses")
+@CrossOrigin(origins = "http://localhost:3000", allowCredentials = "true")
 public class ExpenseController {
 
     @Autowired
@@ -101,5 +104,7 @@ public class ExpenseController {
         writer.flush();
         writer.close();
     }
+
+
 
 }

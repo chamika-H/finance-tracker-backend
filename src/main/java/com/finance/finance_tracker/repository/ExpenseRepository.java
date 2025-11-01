@@ -5,6 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public interface ExpenseRepository extends JpaRepository<Expense, Integer> {
@@ -32,6 +33,10 @@ public interface ExpenseRepository extends JpaRepository<Expense, Integer> {
     @Query("SELECT e.category, SUM(e.amount) " +
             "FROM Expense e WHERE e.userId = :userId GROUP BY e.category")
     List<Object[]> getTotalSpentByCategoryForUser(@Param("userId") Integer userId);
+
+
+
+
 
 
 }
